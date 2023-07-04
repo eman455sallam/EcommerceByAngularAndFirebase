@@ -1,0 +1,39 @@
+<div class="body col col-xs-12 col-sm-6">
+    <h2 class="text-danger m-5">signup form</h2>
+    <form #signupForm="ngForm" (ngSubmit)="onSubmit(signupForm)" >
+      <input class="form-input" #username="ngModel"  type="text" [(ngModel)]="name" name="name"placeholder="Enter your name" required >
+      <div class="alert alert-danger" *ngIf="username.invalid && username.touched" role="alert">
+        name is required
+      </div>
+      <input class="form-input" type="email" #useremail="ngModel" [(ngModel)]="email" name="email" placeholder="Enter your email" required email>
+      <div class="alert alert-danger" *ngIf=" useremail.touched && useremail.errors?.['required']" role="alert">
+        email is required
+    </div>
+     <div class="alert alert-danger" *ngIf=" useremail.touched && useremail.errors?.['email']" role="alert">
+      email is invalid
+    </div>
+      <input  class="form-input"type="text" #useraddress="ngModel" [(ngModel)]="address" name="address" placeholder="Enter your address" required >
+      <div class="alert alert-danger" *ngIf="useraddress.invalid && useraddress.touched" role="alert">
+          address  is required
+      </div>
+  
+      <input class="form-input" type="password" #userpass="ngModel" [(ngModel)]="password" name="pass" placeholder="Enter your password" required minlength="8">
+      <div class="alert alert-danger" *ngIf=" userpass.touched && userpass.errors?.['required']" role="alert">
+        password is required
+    </div>
+    <div class="alert alert-danger" *ngIf=" userpass.touched && userpass.errors?.['minlength']" role="alert">
+      password should be more than 8
+  </div>
+      <input class="form-input" type="password" #userconfirmPass="ngModel"  [(ngModel)]="confirmPassword" name="confirmPass"placeholder="confirm password" required >
+      <div class="alert alert-danger" *ngIf="userconfirmPass.invalid && userconfirmPass.touched" role="alert">
+        confirm password  is required
+    </div>
+    <div class="alert alert-danger" *ngIf="userpass.value !=userconfirmPass.value && userconfirmPass.touched" role="alert">
+       passwords   are not equal
+  </div>
+  <button class="btn btn-danger" [disabled]="signupForm.form.invalid || userpass.value !=userconfirmPass.value" >signup</button>
+    </form>
+  </div>
+  
+  
+  
