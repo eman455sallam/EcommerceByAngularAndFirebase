@@ -16,46 +16,14 @@ export class AuthService {
      return this.angularAuth.createUserWithEmailAndPassword(email,password);
 }
 
-  signIn(){
+  signIn(email:string,password:string){
+    return this.angularAuth.signInWithEmailAndPassword(email,password);
 
   }
 
-  login(){
+ 
 
+  signOut(){
+    return this.angularAuth.signOut();
   }
-
-  
-  // signUp(email:string , password:string){
-  //   return this.angularAuth.createUserWithEmailAndPassword(email, password )
-  //    .then(result=>{
-  //      this.sendVerificationMail();
-  //      this.setUserData(result.user);
-  //    } )
-  //    .catch(err=> err.message
-       
-  //    )
-  //  }
-
-  //  sendVerificationMail(){
-  //    return this.angularAuth.currentUser
-  //    .then(user => user?.sendEmailVerification())
-  //    .then(()=>{ this.router.navigate(['verify-email-address']);
-  //  }
-  //    )
-  //  }
-
-  //  // set user data in firestore
-  //  setUserData(user :any){
-  //    const userRef:AngularFirestoreDocument<any>=this.angularFirestore.doc(
-  //      `users/${user.uid}`
-  //    );
-  //    const userData:User ={
-  //      uid:user.uid,
-  //      email:user.email,
-  //      name:user.name,
-  //      address:user.address,
-  //      password:user.password,
-  //    }
-
-  //  }
 }

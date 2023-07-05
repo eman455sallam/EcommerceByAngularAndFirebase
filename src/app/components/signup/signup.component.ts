@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { User } from 'src/app/interfaces/user';
 import { AuthService } from 'src/app/services/auth.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-signup',
@@ -14,15 +16,26 @@ export class SignupComponent {
   address='';
   password='';
   confirmPassword='';
-constructor(private authService:AuthService ){
+  errorMessage:string='';
+constructor(private authService:AuthService,private router:Router ,private us:UserService ){
 
 }
 onSubmit(signup:NgForm){
   // console.log(signup.value );
   let data=signup.value; 
-  this.authService.signUp( data.email,data.password) 
-  .then(data => console.log(data))
-  .catch(error =>console.log("",error))
+  
+  this.authService.signUp( data.email,data.pass) 
+  .then(result => {
+    this.errorMessage='';
+    this.us.addNewUser(result.user?.uid ,data.name ,data.address)
+    .then(()=>{
+      this.router.navigate(['home'])
+
+    })
+  })
+  .catch(error =>{
+     this.errorMessage=error.message.slice(10,-30);
+  })
 
 
  

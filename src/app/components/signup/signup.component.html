@@ -1,5 +1,8 @@
 <div class="body col col-xs-12 col-sm-6">
     <h2 class="text-danger m-5">signup form</h2>
+    <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+      {{errorMessage}}
+    </div>
     <form #signupForm="ngForm" (ngSubmit)="onSubmit(signupForm)" >
       <input class="form-input" #username="ngModel"  type="text" [(ngModel)]="name" name="name"placeholder="Enter your name" required >
       <div class="alert alert-danger" *ngIf="username.invalid && username.touched" role="alert">
@@ -33,6 +36,9 @@
   </div>
   <button class="btn btn-danger" [disabled]="signupForm.form.invalid || userpass.value !=userconfirmPass.value" >signup</button>
     </form>
+    <div>
+      <a routerLink="/login">have account?</a>
+  </div>
   </div>
   
   
