@@ -1,0 +1,14 @@
+form,h2{
+    width: 60%;
+    margin: auto;
+}
+h2{
+    text-align: center;
+    margin-top: 5px;
+    color: blue;
+}
+label{
+    color:blue;
+    font-weight: bold;
+    
+}

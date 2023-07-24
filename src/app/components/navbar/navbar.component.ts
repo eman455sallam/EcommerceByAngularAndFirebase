@@ -8,9 +8,23 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
-
+   isUser:boolean =false;
   constructor(private as:AuthService ,private router:Router){
 
+  }
+  ngOnInit(){
+   this.checkLogin();
+  }
+  checkLogin(){
+    this.as.user.subscribe(user=>{
+      if(user){
+       this.isUser=true;
+       this.as.userId=user.uid;
+      }else{
+       this.isUser=false;
+       this.as.userId='';
+      }
+   })
   }
 signout(){
   this.as.signOut()

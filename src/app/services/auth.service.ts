@@ -1,14 +1,22 @@
 import { Injectable } from '@angular/core';
+import { FirebaseApp } from '@angular/fire/app';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
-import { User } from '../interfaces/user';
+import { Observable } from 'rxjs';
+import firebase from 'firebase/compat/app';
+
+
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-
-  constructor(private angularAuth:AngularFireAuth ,private angularFirestore:AngularFirestore , private router:Router) { }
+  userId:string=''
+  
+   user:Observable<firebase.User | null>
+  constructor(private angularAuth:AngularFireAuth ,private angularFirestore:AngularFirestore , private router:Router) {
+    this.user=angularAuth.user;
+   }
 
 
 

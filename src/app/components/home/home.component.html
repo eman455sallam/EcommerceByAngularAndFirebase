@@ -6,7 +6,12 @@
         <div class="card-body">
           <h5 class="card-title">{{good.name | titlecase}}</h5>
           <p class="card-text">{{good.price | currency}}</p>
-          <a  class="btn btn-primary" (click)="addToCart(i)">add to cart</a>
+          <button  class="btn btn-primary" (click)="addToCart(i)" *ngIf="add !== i">add to cart</button>
+        <div *ngIf="add === i">
+          <input type="number"  class="form-control" placeholder="amount" #amount>
+        <button class="btn btn-primary" (click)="buy(+amount.value)" >buy</button>
+        </div>
+        
         </div>
       </div>
     </div>

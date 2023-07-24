@@ -5,6 +5,8 @@ import { LoginComponent } from './components/login/login.component';
 import { CartComponent } from './components/cart/cart.component';
 import { GoodsComponent } from './components/goods/goods.component';
 import { SignupComponent } from './components/signup/signup.component';
+import { AddNewComponent } from './components/admin/add-new/add-new.component';
+import { DashboardComponent } from './components/admin/dashboard/dashboard.component';
 
 const routes: Routes = [
   {path:"",component:HomeComponent},
@@ -13,6 +15,9 @@ const routes: Routes = [
   {path:"signup",component:SignupComponent},
   {path:"goods",component:GoodsComponent},
   {path:"cart",component:CartComponent},
+  {path:"add",component:AddNewComponent},
+  {path:"dashboard",component:DashboardComponent},
+
 
 ];
 

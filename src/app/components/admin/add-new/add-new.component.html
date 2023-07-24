@@ -1,0 +1,29 @@
+
+<h2>add new good</h2>
+<form #addForm="ngForm" (ngSubmit)="addnewProduct(addForm)">
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">name</label>
+      <input type="text" #username="ngModel" class="form-control" id="exampleInputName" name="name" ngModel required minlength="3">
+      <div *ngIf="username.touched && username.invalid && username.dirty">
+        <div class="alert alert-danger" role="alert" *ngIf="username.errors?.['required']">name is required</div>
+        <div class="alert alert-danger" role="alert"*ngIf="username.errors?.['minlength']">name should be more than 3</div>
+
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Price</label>
+      <input type="number" #proPrice="ngModel" class="form-control" id="exampleInputPrice" name="price" ngModel required >
+      <div *ngIf="proPrice.invalid && proPrice.touched ">
+        <div class="alert alert-danger" role="alert" *ngIf="proPrice.errors?.['required']">price is required</div>
+        <div class="alert alert-danger" role="alert"*ngIf="proPrice.errors?.['pattern']" >price should be number</div>
+      </div>
+    </div>
+    <div class="mb-3 ">
+      <label for="exampleInputphoto" class="form-label">photo</label>
+      <input type="file" #proPhoto="ngModel" class="form-control" id="examplefile" name="photo" ngModel required #photoInput>
+       <div *ngIf="proPhoto.invalid && proPhoto.touched">
+        <div class="alert alert-danger" role="alert" *ngIf="proPhoto.errors?.['required']">photo is required</div>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="addForm.invalid">add</button>
+  </form>

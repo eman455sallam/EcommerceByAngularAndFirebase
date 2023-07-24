@@ -1,1 +1,32 @@
-<p>cart works!</p>
+<table class="table table-striped" >
+
+        <thead>
+          <tr>
+            <th scope="col">id</th>
+            <th scope="col">name</th>
+            <th scope="col">price</th>
+            <th scope="col">amount</th>
+            <th scope="col">total</th>
+            <th scope="col">options</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let good of cart ; index as i">
+            <th scope="row">{{i+1}}</th>
+            <td>{{good.name}}</td>
+            <td>{{good.price | currency}}</td>
+            <td>
+                <input name="amount" type="number" #amount [(ngModel)]="good.amount" min="1" >
+            </td>
+          <td *ngIf=" good.amount && good.price">{{good.price * good.amount}}</td> 
+            <td>
+                <button type="button" class="btn btn-danger " (click)="delete(i)">delete</button>
+                <button type="button" class="btn btn-warning" (click)="addAmount(i)">add amount</button>
+
+
+            </td>
+          </tr>
+       
+        </tbody>
+      
+  </table>
