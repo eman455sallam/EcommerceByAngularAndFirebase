@@ -8,16 +8,14 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class GoodService {
-  private dbPath = '/goods';
-  goodsRef: AngularFirestoreCollection<Good> ;
 
   constructor(private db: AngularFirestore ,private fs:AngularFireStorage) {
-    this.goodsRef = db.collection(this.dbPath);
+
 
   }
 
   getAll(): AngularFirestoreCollection<Good> {
-    return this.goodsRef;
+    return this.db.collection('goods')
   }
 
   addNewProduct(name:String,price:Number,image:File){
@@ -36,6 +34,14 @@ export class GoodService {
 
 
 
+  }
+
+  delete(id:String){
+    this.db.doc('goods/'+id).delete()
+  }
+
+  editPrice(id:String ,price:Number){
+     this.db.doc('goods/'+id).update({price})
   }
 }
 

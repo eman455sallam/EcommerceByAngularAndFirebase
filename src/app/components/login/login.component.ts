@@ -19,6 +19,7 @@ onSubmit(form:NgForm){
   let data=form.value;
   this.as.signIn(data.email, data.pass)
   .then((result)=>{
+    
     this.errorMessage='';
     this.router.navigate(['home']);
 
@@ -27,7 +28,7 @@ onSubmit(form:NgForm){
   .catch((error)=>{
     this.errorMessage=error.message.slice(10,-23);
   })
-  
+
 
 }
 

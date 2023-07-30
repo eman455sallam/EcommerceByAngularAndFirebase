@@ -20,17 +20,17 @@ export class HomeComponent {
   ngOnInit(): void {
     this.retrieveGoods();
   }
-
   retrieveGoods(): void {
     this.goodService.getAll().snapshotChanges().pipe(
       map(changes =>
         changes.map(c =>
-          ({ id: c.payload.doc.id, ...c.payload.doc.data() })
+          ({ id: c.payload.doc.id,
+             ...c.payload.doc.data() })
         )
       )
     ).subscribe(data => {
       this.goods = data;
-      
+
     });
   }
   addToCart(index:number){
@@ -47,4 +47,4 @@ export class HomeComponent {
     this.cs.addToCart(data)
     .then(()=>this.add=-1)
   }
-} 
+}

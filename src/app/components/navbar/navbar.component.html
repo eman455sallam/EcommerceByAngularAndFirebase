@@ -27,14 +27,13 @@
           <li class="nav-item">
             <a class="nav-link" routerLink="/signup"  *ngIf="!isUser" routerLinkActive="active">signup</a>
           </li>
-  
+
           <li class="nav-item">
             <button type="button" class="btn btn-warning"  *ngIf="isUser" (click)="signout()">logout</button>
           </li>
-  
+
         </ul>
-  
+
       </div>
     </div>
   </nav>
-  

@@ -12,8 +12,9 @@ import firebase from 'firebase/compat/app';
 })
 export class AuthService {
   userId:string=''
-  
-   user:Observable<firebase.User | null>
+   user :Observable<firebase.User |null>
+
+
   constructor(private angularAuth:AngularFireAuth ,private angularFirestore:AngularFirestore , private router:Router) {
     this.user=angularAuth.user;
    }
@@ -29,7 +30,7 @@ export class AuthService {
 
   }
 
- 
+
 
   signOut(){
     return this.angularAuth.signOut();

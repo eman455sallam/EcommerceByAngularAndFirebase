@@ -1,4 +1,5 @@
-<table class="table">
+<h2 class="text-center m-5 danger">dashboard</h2>
+<table class="table" >
   <thead>
     <tr>
       <th scope="col">id</th>
@@ -8,11 +9,18 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
+    <tr *ngFor="let good of goods ; index as i">
+      <th scope="row">{{i+1}}</th>
+      <td>{{good.name}}</td>
+      <td>
+        <input name="price" type="number" #price [(ngModel)]="good.price" min="1" >
+
+      </td>
+      <td>
+        <button type="button" class="btn btn-warning" (click)="updatePrice(i)" >edit price</button>
+        <button type="button" class="btn btn-danger "  (click)="delete(i)">delete</button>
+
+      </td>
     </tr>
   </tbody>
 </table>
