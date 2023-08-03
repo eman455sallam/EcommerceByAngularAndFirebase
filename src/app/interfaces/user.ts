@@ -3,4 +3,5 @@ export interface User {
     name?:string,
     address?:string,
     password?:string,
+    isAdmin?:boolean,
 }

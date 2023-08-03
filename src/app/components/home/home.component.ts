@@ -4,6 +4,10 @@ import { map } from 'rxjs/operators';
 import { Good } from 'src/app/interfaces/good';
 import { CartService } from 'src/app/services/cart.service';
 import { Shooping } from 'src/app/interfaces/shooping';
+import { UserService } from 'src/app/services/user.service';
+import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-home',
@@ -14,11 +18,14 @@ export class HomeComponent {
 
   goods: Good[]=[];
   add:number=-1;
-  constructor(private goodService:GoodService ,private cs:CartService){
+  constructor(private goodService:GoodService ,private cs:CartService ,private us:UserService ,private as:AuthService,private router:Router){
 
   }
   ngOnInit(): void {
     this.retrieveGoods();
+
+
+
   }
   retrieveGoods(): void {
     this.goodService.getAll().snapshotChanges().pipe(
@@ -34,7 +41,12 @@ export class HomeComponent {
     });
   }
   addToCart(index:number){
-    this.add=+index;
+      if(this.as.userId == ''){
+        this.router.navigate(['login'])
+      }else{
+        this.add=+index;
+
+      }
   }
   buy(amount: number){
 

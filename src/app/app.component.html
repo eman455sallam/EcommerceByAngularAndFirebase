@@ -1,9 +1,10 @@
 <div class="nav">
   <app-navbar></app-navbar>
   </div>
-  
-  <div>
-    <router-outlet></router-outlet>
+<div >
+  <div class="router-container" [@router]="myoutlet.activatedRouteData['animation']">
+    <router-outlet #myoutlet="outlet"></router-outlet>
   </div>
-  
-  
+</div>
+
+
